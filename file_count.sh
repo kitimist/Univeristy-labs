@@ -8,6 +8,7 @@ fi
 
 # Set the directory to check
 DIR="/etc"
+RESULT_FILE="/tmp/file_count_result.txt"
 
 # Inform about the script work
 echo "Count files (excluding directories and links) in $DIR"
@@ -19,13 +20,15 @@ read user_input
 # Inform the user that the counting process has started
 echo "Counting files in $DIR ..."
 
-# If  'yes', count only regular files, excluding others dirs and links
+# If  'yes', find and save only regular files to file, excluding others dirs and links
 if [[ $user_input == "yes" ]]; then
-  file_count=$(find "$DIR" -type f -not -type d -not -type l | wc -l)
+  find "$DIR" -type f  > "$RESULT_FILE"
 else
   # Otherwise, only exclude dirs and links
-  file_count=$(find "$DIR" -not -type d -not -type l | wc -l)
+  find "$DIR" -not -type d -not -type l > "$RESULT_FILE"
 fi
 
-# Output the result
+# Count the number of result files and print 
+file_count=$(wc -l < "$RESULT_FILE")
 echo "The number of files in $DIR: $file_count"
+echo "List of files was saved in $RESULT_FILE"
