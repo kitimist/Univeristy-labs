@@ -1,0 +1,74 @@
+_epctrl() {
+    local i=1 cmd opts
+
+    opts=(
+        "config"
+    )
+
+    while [ $i -lt $COMP_CWORD ]; do
+        local s="${COMP_WORDS[i]}"
+
+        case "$s" in
+            *)
+                cmd="$s"
+                break
+                ;;
+        esac
+
+        ((i++))
+    done
+
+    if [ $i -eq $COMP_CWORD ]; then
+        COMPREPLY=($(compgen -W "${opts[*]}" -- "${COMP_WORDS[COMP_CWORD]}"))
+        return
+    fi
+
+    case "$cmd" in
+        config) _epctrl_config ;;
+        *) ;;
+    esac
+}
+
+_epctrl_config() {
+    local i=1 subidx opts
+
+    opts=(
+        "invalid-cert-action"
+    )
+
+    while [ $i -lt $COMP_CWORD ]; do
+        case "${COMP_WORDS[i]}" in
+            config)
+                subidx=$i
+                break
+                ;;
+        esac
+
+        ((i++))
+    done
+
+    if [ $i -eq $((COMP_CWORD-1)) ]; then
+        COMPREPLY=($(compgen -W "${opts[*]}" -- "${COMP_WORDS[COMP_CWORD]}"))
+        return
+    fi
+
+    while [ $subidx -lt $COMP_CWORD ]; do
+        if [ $subidx -lt $((COMP_CWORD-2)) ]; then
+            COMPREPLY=()
+            return
+        fi
+
+        case "${COMP_WORDS[subidx]}" in
+            invalid-cert-action)
+                COMPREPLY=($(compgen -W "allow warn deny" -- "${COMP_WORDS[COMP_CWORD]}"))
+                return
+                ;;
+        esac
+
+        ((subidx++))
+    done
+}
+
+if [ -f /opt/forticlient/epctrl ]; then
+    complete -F _epctrl /opt/forticlient/epctrl
+fi

@@ -1,0 +1,8 @@
+Package: regular-files-from-etc
+Version: 1.0
+Section: misc
+Priority: optional
+Architecture: all
+Depends: 
+Maintainer: Alona Moroz <kitimist@gmail.com>
+Description: A Debian package that includes regular files from /etc

@@ -1,0 +1,15 @@
+127.0.0.1	localhost
+127.0.1.1	kitimist-laptop
+127.0.0.1       etsys.intra etsys.vms
+172.27.72.46   line.int.portaone.com
+52.209.93.49   line2.portaone.com
+192.168.1.192       vh1.my vh2.my
+192.168.1.137    rating.my movie.my
+
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
