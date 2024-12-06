@@ -1,0 +1,51 @@
+name: Build RPM and DEB packages
+
+on:
+  push:
+    branches:
+      - build-trigger  
+  pull_request:
+    branches:
+      - build-trigger
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    # Build deb
+    - name: Install dependencies for DEB build
+      run: |
+        sudo apt update
+        sudo apt install -y build-essential devscripts debhelper
+
+    - name: Build DEB package
+      run: |
+        cd ./debbuild/
+        dpkg-deb --build .  ./kitimist-deb-package.deb
+      
+    - name: Upload DEB package
+      uses: actions/upload-artifact@v2
+      with:
+        name: kitimist-deb-package-${{ github.run_id }}
+        path: ./kitimist-deb-package.deb
+
+    # Build rpm 
+    - name: Install RPM build tools
+      run: |
+        sudo yum install -y rpm-build
+
+    - name: Build RPM package
+      run: |
+        cd ./rpmbuild/SPECS
+        rpmbuild -ba regular_files_from_etc.spec
+
+    - name: Upload RPM package
+      uses: actions/upload-artifact@v2
+      with:
+        name: kitimist-rpm-package
+        path: ./rpmbuild/RPMS/x86_64/kitimist-rpm-package-${{ github.run_id }}.x86_64.rpm
+
