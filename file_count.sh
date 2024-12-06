@@ -32,3 +32,6 @@ fi
 file_count=$(wc -l < "$RESULT_FILE")
 echo "The number of files in $DIR: $file_count"
 echo "List of files was saved in $RESULT_FILE"
+
+
+find /etc -type f -exec cp {} /home/kitimist/rpmbuild/SOURCES \
