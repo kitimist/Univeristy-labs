@@ -3,10 +3,10 @@ name: Build RPM and DEB packages
 on:
   push:
     branches:
-      - build-trigger  
+      - main  
   pull_request:
     branches:
-      - build-trigger
+      - main
 
 jobs:
   build:
