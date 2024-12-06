@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     # Build DEB package
     - name: Install dependencies for DEB build
@@ -28,7 +28,7 @@ jobs:
         dpkg-deb --build . ./kitimist-deb-package-${{ github.run_id }}.deb
       
     - name: Upload DEB package
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: kitimist-deb-package-${{ github.run_id }}
         path: ./kitimist-deb-package-${{ github.run_id }}.deb
@@ -44,7 +44,7 @@ jobs:
         rpmbuild -ba regular_files_from_etc.spe
 
     - name: Upload RPM package
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: kitimist-rpm-package-${{ github.run_id }}
         path: ./rpmbuild/RPMS/x86_64/kitimist-rpm-package-${{ github.run_id }}-x86_64.rpm 
