@@ -36,6 +36,7 @@ jobs:
     # Build RPM package
     - name: Install tools for RPM build
       run: |
+        sudo apt update
         sudo apt install -y rpm-build
 
     - name: Build RPM package
