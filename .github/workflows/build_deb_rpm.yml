@@ -38,16 +38,13 @@ jobs:
       run: |
         sudo apt install -y rpm
         
-    - name: Debug current directory
-      run: |
-        pwd
-        ls -l
-        ls -la ./rpmbuild/SOURCES
-        
     - name: Build RPM package
       run: |
         cd ./rpmbuild/SPECS
         rpmbuild -ba regular_files_from_etc.spec
+
+    - name: Check DEB file existence
+      run: ls -la ./rpmbuild/
 
     - name: Upload RPM package
       uses: actions/upload-artifact@v4
