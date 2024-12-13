@@ -41,7 +41,7 @@ jobs:
     - name: Build RPM package
       run: |
         cd ./rpmbuild/SPECS
-        rpmbuild -ba regular_files_from_etc.spe
+        rpmbuild -ba regular_files_from_etc.spec
 
     - name: Upload RPM package
       uses: actions/upload-artifact@v3
