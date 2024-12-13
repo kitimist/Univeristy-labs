@@ -19,7 +19,7 @@ jobs:
     # Build DEB package
     - name: Install dependencies for DEB build
       run: |
-        sudo apt update
+        sudo apt-get upgrade
         sudo apt install -y build-essential devscripts debhelper
 
     - name: Build DEB package
@@ -36,8 +36,7 @@ jobs:
     # Build RPM package
     - name: Install tools for RPM build
       run: |
-        sudo apt update
-        sudo apt install -y rpm-build
+        sudo apt install -y rpm
 
     - name: Build RPM package
       run: |
