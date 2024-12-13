@@ -15,10 +15,7 @@ This package contains  regular file from /etc directory.
 
 %install
 mkdir -p %{buildroot}/etc_files
-pwd
-ls -la
-find /home/ -type d -name "SOURCES"
-cp -r /home/kitimist/rpmbuild/SOURCES/*  %{buildroot}/etc_files/
+cp -r /home/runner/work/Univeristy-labs/Univeristy-labs/rpmbuild/SOURCES/*  %{buildroot}/etc_files/
 
 %clean 
 rm -rf %{buildroot}
