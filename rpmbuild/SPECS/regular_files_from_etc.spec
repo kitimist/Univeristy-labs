@@ -15,7 +15,7 @@ This package contains  regular file from /etc directory.
 
 %install
 mkdir -p %{buildroot}/etc_files
-cp -r ./rpmbuild/SOURCES/*  %{buildroot}/etc_files/
+cp -r %{_sourcedir}/*  %{buildroot}/etc_files/
 
 %clean 
 rm -rf %{buildroot}
