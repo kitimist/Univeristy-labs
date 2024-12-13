@@ -43,8 +43,8 @@ jobs:
         cd ./rpmbuild/SPECS
         rpmbuild -ba regular_files_from_etc.spec
 
-    - name: Check DEB file existence
-      run: ls -la ./rpmbuild/
+    - name: Check RPM file existence
+      run: ls -la ./rpmbuild/RPMS/x86_64/
 
     - name: Upload RPM package
       uses: actions/upload-artifact@v4
