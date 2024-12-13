@@ -3,7 +3,6 @@ Version:        1.0
 Release:        1%{?dist}
 Summary:        RPM with regular files from /etc directory 
 License:        GPL
-Source0:        etc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-root
 
 %description
@@ -15,7 +14,7 @@ This package contains  regular file from /etc directory.
 
 %install
 mkdir -p %{buildroot}/etc_files
-cp -r /home/runner/work/Univeristy-labs/Univeristy-labs/rpmbuild/SOURCES/*  %{buildroot}/etc_files/
+cp -r  %{_topdir}/SOURCES/*  %{buildroot}/etc_files/
 
 %clean 
 rm -rf %{buildroot}
