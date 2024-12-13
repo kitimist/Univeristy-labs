@@ -26,21 +26,23 @@ jobs:
       run: |
         cd ./debbuild/
         dpkg-deb --build . ./kitimist-deb-package-${{ github.run_id }}.deb
-    
-    - name: Check DEB file existence
-      run: ls -la ./debbuild/
        
     - name: Upload DEB package
       uses: actions/upload-artifact@v3
       with:
         name: kitimist-deb-package-${{ github.run_id }}
-        path: ./kitimist-deb-package-${{ github.run_id }}.deb
+        path: ./debbuild/kitimist-deb-package-${{ github.run_id }}.deb
 
     # Build RPM package
     - name: Install tools for RPM build
       run: |
         sudo apt install -y rpm
-
+        
+    - name: Debug current directory
+      run: |
+        pwd
+        ls -l
+        
     - name: Build RPM package
       run: |
         cd ./rpmbuild/SPECS
