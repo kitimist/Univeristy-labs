@@ -50,4 +50,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: kitimist-rpm-package-${{ github.run_id }}
-        path: ./rpmbuild/RPMS/x86_64/kitimist-rpm-package-${{ github.run_id }}-x86_64.rpm 
+        path: ./rpmbuild/RPMS/x86_64/regular_files_from_etc-1.0-1.x86_64.rpm 
