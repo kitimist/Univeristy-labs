@@ -10,17 +10,17 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  
+    runs-on: ubuntu-22.04  
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # Build DEB package
     - name: Install dependencies for DEB build
       run: |
-        sudo apt-get upgrade
-        sudo apt install -y build-essential devscripts debhelper
+       # sudo apt-get upgrade
+       # sudo apt install -y build-essential devscripts debhelper
 
     - name: Build DEB package
       run: |
@@ -50,7 +50,7 @@ jobs:
         rpmbuild -ba regular_files_from_etc.spec
 
     - name: Upload RPM package
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: kitimist-rpm-package-${{ github.run_id }}
         path: ./rpmbuild/RPMS/x86_64/kitimist-rpm-package-${{ github.run_id }}-x86_64.rpm 
