@@ -28,7 +28,7 @@ jobs:
         dpkg-deb --build . ./kitimist-deb-package-${{ github.run_id }}.deb
        
     - name: Upload DEB package
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: kitimist-deb-package-${{ github.run_id }}
         path: ./debbuild/kitimist-deb-package-${{ github.run_id }}.deb
