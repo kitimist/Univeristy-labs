@@ -42,6 +42,7 @@ jobs:
       run: |
         pwd
         ls -l
+        ls -la ./rpmbuild/SOURCES
         
     - name: Build RPM package
       run: |
