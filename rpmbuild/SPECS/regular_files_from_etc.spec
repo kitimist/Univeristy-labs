@@ -14,7 +14,7 @@ This package contains  regular file from /etc directory.
 
 %install
 mkdir -p %{buildroot}/etc_files
-cp -r  %{_topdir}/SOURCES/*  %{buildroot}/etc_files/
+cp -r  /home/runner/work/Univeristy-labs/Univeristy-labs/rpmbuild/SOURCES/*  %{buildroot}/etc_files/
 
 %clean 
 rm -rf %{buildroot}
