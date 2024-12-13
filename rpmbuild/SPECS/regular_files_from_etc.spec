@@ -15,7 +15,7 @@ This package contains  regular file from /etc directory.
 
 %install
 mkdir -p %{buildroot}/etc_files
-cp -r /home/kitimist/rpmbuild/SOURCES/*  %{buildroot}/etc_files/
+cp -r ./rpmbuild/SOURCES/*  %{buildroot}/etc_files/
 
 %clean 
 rm -rf %{buildroot}
@@ -24,5 +24,5 @@ rm -rf %{buildroot}
 /etc_files/*
 
 %changelog
-*  Thu Oct 31 2024 Alona Moroz <kitimist@gmail.com> - 1.0-1
+* %{lua: print(os.date("%a %b %d %Y"))} Alona Moroz <kitimist@gmail.com> - 1.0-1
 - Initial package creation
